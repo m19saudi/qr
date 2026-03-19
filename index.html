@@ -21,7 +21,7 @@
 
     .container {
       display: flex;
-      flex-wrap: wrap; /* Allows wrapping on small screens */
+      flex-wrap: wrap;
       width: 100%;
       max-width: 900px;
       height: auto;
@@ -29,13 +29,15 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      padding: 20px;
     }
 
     .left, .right {
       flex: 1;
-      padding: 40px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
 
     .left {
@@ -53,15 +55,15 @@
       padding: 15px;
       border-radius: 10px;
       border: none;
-      font-size: 15px;
+      font-size: 16px;
       outline: none;
       background: #111827;
       color: #fff;
       height: 180px;
-      resize: none;
-      overflow-y: auto;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
       width: 100%;
+      resize: none;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
     }
 
     textarea::placeholder {
@@ -102,6 +104,7 @@
       align-items: center;
       justify-content: center;
       display: flex;
+      position: relative;
     }
 
     #qrcode {
@@ -113,26 +116,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease; /* Smooth transition when appearing */
     }
 
-    /* Media query for smaller screens (tablets and phones) */
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
       .container {
-        flex-direction: column; /* Stack left and right sections */
+        flex-direction: column;
       }
 
       .left, .right {
-        padding: 20px; /* Reduced padding for smaller screens */
+        padding: 15px;
         width: 100%;
       }
 
       h1 {
-        font-size: 24px; /* Slightly smaller heading */
+        font-size: 24px;
       }
 
       textarea {
-        height: 120px; /* Smaller text area */
-        font-size: 14px; /* Adjusted font size */
+        font-size: 14px;
+        height: 150px;
       }
 
       #qrcode {
@@ -143,6 +147,27 @@
       button {
         font-size: 12px;
         padding: 8px 12px;
+      }
+
+      .hint {
+        font-size: 12px;
+      }
+    }
+
+    /* Fix for the disappearing QR and extended textbox */
+    @media (max-width: 480px) {
+      .left {
+        padding: 10px;
+      }
+
+      textarea {
+        height: 120px;
+        font-size: 14px;
+      }
+
+      #qrcode {
+        width: 180px;
+        height: 180px;
       }
     }
   </style>
