@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live QR Generator</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -15,12 +16,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 10px; /* Added padding for mobile spacing */
     }
 
     .container {
       display: flex;
-      width: 900px;
-      height: 500px;
+      flex-direction: column; /* Stack elements vertically on small screens */
+      width: 100%; /* Full width */
+      max-width: 900px; /* Limit max width for larger screens */
+      height: auto;
       background: #111827;
       border-radius: 16px;
       overflow: hidden;
@@ -29,7 +33,7 @@
 
     .left, .right {
       flex: 1;
-      padding: 40px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
     }
@@ -37,26 +41,27 @@
     .left {
       background: #1f2937;
       justify-content: flex-start;
-      padding-top: 20px;
     }
 
     h1 {
       margin-bottom: 15px;
-      font-size: 28px;
+      font-size: 24px; /* Adjusted font size */
+      text-align: center;
     }
 
     textarea {
       padding: 15px;
       border-radius: 10px;
       border: none;
-      font-size: 15px;
+      font-size: 16px;
       outline: none;
       background: #111827;
       color: #fff;
-      height: 180px;
+      height: 150px;
       resize: none;
       overflow-y: auto;
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+      width: 100%; /* Make it responsive */
     }
 
     textarea::placeholder {
@@ -67,6 +72,7 @@
       margin-top: 10px;
       display: flex;
       gap: 10px;
+      justify-content: center; /* Center the buttons */
     }
 
     button {
@@ -88,6 +94,7 @@
       margin-top: 10px;
       font-size: 14px;
       color: #9ca3af;
+      text-align: center; /* Centered text */
     }
 
     .right {
@@ -106,6 +113,38 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column; /* Stack left and right sections vertically */
+        max-width: 100%;
+      }
+
+      .left, .right {
+        width: 100%; /* Full width */
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 22px; /* Smaller font size */
+      }
+
+      textarea {
+        height: 120px;
+        font-size: 14px;
+      }
+
+      #qrcode {
+        width: 180px;
+        height: 180px;
+      }
+
+      button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
     }
   </style>
 </head>
